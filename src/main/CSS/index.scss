@@ -1,0 +1,91 @@
+@import url('https://fonts.googleapis.com/css2?family=Kalam&display=swap');
+
+body {
+  overflow-y: hidden;
+  overflow-x: hidden;
+  // background: linear-gradient(#cf82e7, #f9f8f7);
+backdrop-filter: blur(4px);
+width: 100%;
+background-size: cover;
+  background-repeat: no-repeat;
+  height: 99vh;
+  .container {
+    height:85vh ;
+    overflow-y: scroll;
+    scroll-behavior: smooth;
+    &::-webkit-scrollbar{
+      background-color: transparent;
+      border-radius: 50px;
+      width: 5px;
+    }
+    &::-webkit-scrollbar-thumb{
+      border-radius: 50px;
+      background-color: #161514c4;
+    }
+    h1 {
+      text-align: center;
+      font-family: 'Kalam', cursive;
+    }
+    padding: 0px 50px;
+  }
+  .typing {
+    margin-top: 10px;
+    border-radius: 10px;
+    width: 80px;
+  }
+  .bot {
+    background-color: white;
+    max-width: 600px;
+    font-size: 18px;
+    padding: 5px;
+    border-radius: 10px;
+    font-family: sans-serif;
+    animation: botIn 1s linear;
+  }
+  @keyframes botIn {
+    0% {
+      opacity: 0;
+    }
+    100% {
+      opacity: 100;
+    }
+  }
+  .user {
+    display: flex;
+    justify-content: end;
+
+    p {
+      font-size: 18px;
+      padding: 10px;
+      border-radius: 10px;
+      font-family: sans-serif;
+      background-color: black;
+      color: white;
+    }
+  }
+  .app {
+    position: absolute;
+    bottom: 0;
+    margin-bottom: 5px;
+    width: 90%;
+    text-align: center;
+
+    input {
+      width: 50%;
+      border: none;
+      padding: 15px;
+      border-radius: 10px;
+      outline: none;
+    }
+
+    button {
+      margin: 40px 20px;
+      background-color: transparent;
+      border: none;
+      img {
+        // padding-top: 10px;
+        width: 28px;
+      }
+    }
+  }
+}

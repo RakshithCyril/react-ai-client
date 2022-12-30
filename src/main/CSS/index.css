@@ -1,0 +1,95 @@
+@import url("https://fonts.googleapis.com/css2?family=Kalam&display=swap");
+body {
+  overflow-y: hidden;
+  overflow-x: hidden;
+  -webkit-backdrop-filter: blur(4px);
+          backdrop-filter: blur(4px);
+  width: 100%;
+  background-size: cover;
+  background-repeat: no-repeat;
+  height: 99vh;
+}
+body .container {
+  height: 85vh;
+  overflow-y: scroll;
+  scroll-behavior: smooth;
+  padding: 0px 50px;
+}
+body .container::-webkit-scrollbar {
+  background-color: transparent;
+  border-radius: 50px;
+  width: 5px;
+}
+body .container::-webkit-scrollbar-thumb {
+  border-radius: 50px;
+  background-color: rgba(22, 21, 20, 0.768627451);
+}
+body .container h1 {
+  text-align: center;
+  font-family: "Kalam", cursive;
+}
+body .typing {
+  margin-top: 10px;
+  border-radius: 10px;
+  width: 80px;
+}
+body .bot {
+  background-color: white;
+  max-width: 600px;
+  font-size: 18px;
+  padding: 5px;
+  border-radius: 10px;
+  font-family: sans-serif;
+  -webkit-animation: botIn 1s linear;
+          animation: botIn 1s linear;
+}
+@-webkit-keyframes botIn {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 100;
+  }
+}
+@keyframes botIn {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 100;
+  }
+}
+body .user {
+  display: flex;
+  justify-content: end;
+}
+body .user p {
+  font-size: 18px;
+  padding: 10px;
+  border-radius: 10px;
+  font-family: sans-serif;
+  background-color: black;
+  color: white;
+}
+body .app {
+  position: absolute;
+  bottom: 0;
+  margin-bottom: 5px;
+  width: 90%;
+  text-align: center;
+}
+body .app input {
+  width: 50%;
+  border: none;
+  padding: 15px;
+  border-radius: 10px;
+  outline: none;
+}
+body .app button {
+  margin: 40px 20px;
+  background-color: transparent;
+  border: none;
+}
+body .app button img {
+  width: 28px;
+}/*# sourceMappingURL=index.css.map */
