@@ -1,6 +1,6 @@
-// import logo from './logo.svg';
+import logo from '../src/main/image/Logo.png';
 // import './App.css';
-// import {Route,Router} from 'react-router-dom'
+import {Route,Router} from 'react-router-dom'
 import Chat from './main/Chat'
 
 function App() {

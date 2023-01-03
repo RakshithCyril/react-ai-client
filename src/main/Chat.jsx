@@ -4,6 +4,7 @@ import microphone from './image/icons8-microphone-30.png'
 import send from './image/icons8-paper-plane-64.png'
 import typing from './image/typing-dots.gif'
 import axios from 'axios'
+import LogoCali from './image/LogoCali.png'
 
 export default class Chat extends React.Component {
   constructor (props) {
@@ -34,6 +35,7 @@ export default class Chat extends React.Component {
       .then(res => {
         this.setState({ botInput: [...this.state.botInput, res.data] })
         console.log(this.state.botInput)
+        
       })
       .catch(error => {
         console.log(error)
@@ -56,24 +58,28 @@ export default class Chat extends React.Component {
     })
     return (
       <div className='container'>
-        <h1>ATOM</h1>
+        {/* <h1>Natalia</h1> */}
+        <div className='nav'>
+        <img className='logocali' src={LogoCali} alt="" />
+        </div>
+        <div className="displaySpace">
         <div className='bot' style={{backgroundColor:"white"}}>
           <p>
-            Hello, I'm ATOM, your AI assistant, and I'm here to answer any
-            queries you might have.
+          Good day, I'm Natalia. Your AI assistant, I'm here to assist you with any questions you may have. You can call NAT by name.
           </p>
         </div>
 
         {user}
 
         <img className='typing' src={this.state.gif} alt='' />
+        </div>
         <div className='app'>
           <form onSubmit={this.userInput} >
-            <button type='none'>
+            <button type='none' className='mic'>
               <img src={microphone} alt='' />
             </button>
             <input type='text' className='test' name='text' placeholder='Type something.....' />
-            <button type='submit'>
+            <button type='submit' className='send'>
               <img src={send} alt='' />
             </button>
           </form>
@@ -92,19 +98,18 @@ class Bot extends React.Component {
   }
 componentDidMount(){
   setTimeout(()=>{
-    this.setState({ botout: [...this.state.botout, this.props.test] })
-    
-    
+    this.setState({ botout: [...this.state.botout, this.props.test] })    
   },2000)
   
 }
+
   render () {
     const botReply = this.state.botout.slice(-1)[0] 
     if(!botReply){
       console.log('error')
     }else{
       return (
-        <div className='bot '>
+        <div className='bot'>
           <p>{botReply}</p>
         </div>
       )

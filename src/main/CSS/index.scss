@@ -3,44 +3,77 @@
 body {
   overflow-y: hidden;
   overflow-x: hidden;
-  // background: linear-gradient(#cf82e7, #f9f8f7);
-backdrop-filter: blur(4px);
-width: 100%;
-background-size: cover;
+  background-color: #313030;
+  backdrop-filter: blur(4px);
+  width: 100%;
+  background-size: cover;
   background-repeat: no-repeat;
   height: 99vh;
   .container {
-    height:85vh ;
+    height: 85vh;
     overflow-y: scroll;
     scroll-behavior: smooth;
-    &::-webkit-scrollbar{
+    &::-webkit-scrollbar {
       background-color: transparent;
       border-radius: 50px;
       width: 5px;
     }
-    &::-webkit-scrollbar-thumb{
+    &::-webkit-scrollbar-thumb {
       border-radius: 50px;
       background-color: #161514c4;
     }
-    h1 {
-      text-align: center;
-      font-family: 'Kalam', cursive;
+    .nav{
+      margin-left: -30px;
+      width: 100%;
+      display: flex;
+      position: fixed;
+      justify-content: center;
+      padding: 20px;
+      background-color:#313030;
+      img{
+        margin-left: -30px;
+      }
     }
     padding: 0px 50px;
   }
   .typing {
     margin-top: 10px;
-    border-radius: 10px;
-    width: 80px;
+    border-radius: 50px;
+    margin-left: 30px;
+    width: 60px;
+    
   }
+  .displaySpace{
+margin-top: 120px;
+
   .bot {
+    margin-left: 30px;
     background-color: white;
     max-width: 600px;
-    font-size: 18px;
+    font-size: 16px;
     padding: 5px;
-    border-radius: 10px;
+    border-radius: 0px 10px 10px 10px;
     font-family: sans-serif;
     animation: botIn 1s linear;
+    p{
+      margin-top: -35px;     
+    }
+    &::before{
+      content: " ";
+      display: block;
+      // position:absolute;
+      margin-left: -65px;
+      margin-top: 0px;
+      border-radius: 50%;
+      width: 50px;
+      height: 50px;
+      background-color: white;
+      background-position: center;
+      background-size: contain;
+      background-repeat: no-repeat;
+      background-image: url('../image/Logo.png');
+        
+    }
   }
   @keyframes botIn {
     0% {
@@ -55,37 +88,54 @@ background-size: cover;
     justify-content: end;
 
     p {
-      font-size: 18px;
+      font-size: 16px;
       padding: 10px;
-      border-radius: 10px;
+      border-radius: 10px 0px 10px 10px;
       font-family: sans-serif;
-      background-color: black;
-      color: white;
+      background-color: #268c99b6;
+      color: rgba(255, 255, 255, 0.926);
     }
+  }
   }
   .app {
     position: absolute;
     bottom: 0;
-    margin-bottom: 5px;
+    margin-bottom: 20px;
     width: 90%;
     text-align: center;
 
     input {
       width: 50%;
-      border: none;
+      border: 2px solid #268B99 ;
       padding: 15px;
+      background: rgba(255, 255, 255, 0.816);
       border-radius: 10px;
       outline: none;
     }
 
     button {
-      margin: 40px 20px;
+      position: absolute;
+      bottom: 0;
       background-color: transparent;
       border: none;
+      border-radius: 50%;
+      transition: 200ms linear;
+      width: 50px;
+      height: 50px;
       img {
         // padding-top: 10px;
-        width: 28px;
+        width: 35px;
+        height: 35px;
       }
+      &:hover{
+        background-color: rgb(255, 255, 255);
+      }
+    }
+    .mic{
+      margin-left: -60px;
+    }
+    .send{
+      margin-left: 10px;
     }
   }
 }

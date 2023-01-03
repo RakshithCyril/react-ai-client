@@ -2,6 +2,7 @@
 body {
   overflow-y: hidden;
   overflow-x: hidden;
+  background-color: #313030;
   -webkit-backdrop-filter: blur(4px);
           backdrop-filter: blur(4px);
   width: 100%;
@@ -24,24 +25,54 @@ body .container::-webkit-scrollbar-thumb {
   border-radius: 50px;
   background-color: rgba(22, 21, 20, 0.768627451);
 }
-body .container h1 {
-  text-align: center;
-  font-family: "Kalam", cursive;
+body .container .nav {
+  margin-left: -30px;
+  width: 100%;
+  display: flex;
+  position: fixed;
+  justify-content: center;
+  padding: 20px;
+  background-color: #313030;
+}
+body .container .nav img {
+  margin-left: -30px;
 }
 body .typing {
   margin-top: 10px;
-  border-radius: 10px;
-  width: 80px;
+  border-radius: 50px;
+  margin-left: 30px;
+  width: 60px;
 }
-body .bot {
+body .displaySpace {
+  margin-top: 120px;
+}
+body .displaySpace .bot {
+  margin-left: 30px;
   background-color: white;
   max-width: 600px;
-  font-size: 18px;
+  font-size: 16px;
   padding: 5px;
-  border-radius: 10px;
+  border-radius: 0px 10px 10px 10px;
   font-family: sans-serif;
   -webkit-animation: botIn 1s linear;
           animation: botIn 1s linear;
+}
+body .displaySpace .bot p {
+  margin-top: -35px;
+}
+body .displaySpace .bot::before {
+  content: " ";
+  display: block;
+  margin-left: -65px;
+  margin-top: 0px;
+  border-radius: 50%;
+  width: 50px;
+  height: 50px;
+  background-color: white;
+  background-position: center;
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-image: url("../image/Logo.png");
 }
 @-webkit-keyframes botIn {
   0% {
@@ -59,37 +90,53 @@ body .bot {
     opacity: 100;
   }
 }
-body .user {
+body .displaySpace .user {
   display: flex;
   justify-content: end;
 }
-body .user p {
-  font-size: 18px;
+body .displaySpace .user p {
+  font-size: 16px;
   padding: 10px;
-  border-radius: 10px;
+  border-radius: 10px 0px 10px 10px;
   font-family: sans-serif;
-  background-color: black;
-  color: white;
+  background-color: rgba(38, 140, 153, 0.7137254902);
+  color: rgba(255, 255, 255, 0.926);
 }
 body .app {
   position: absolute;
   bottom: 0;
-  margin-bottom: 5px;
+  margin-bottom: 20px;
   width: 90%;
   text-align: center;
 }
 body .app input {
   width: 50%;
-  border: none;
+  border: 2px solid #268B99;
   padding: 15px;
+  background: rgba(255, 255, 255, 0.816);
   border-radius: 10px;
   outline: none;
 }
 body .app button {
-  margin: 40px 20px;
+  position: absolute;
+  bottom: 0;
   background-color: transparent;
   border: none;
+  border-radius: 50%;
+  transition: 200ms linear;
+  width: 50px;
+  height: 50px;
 }
 body .app button img {
-  width: 28px;
+  width: 35px;
+  height: 35px;
+}
+body .app button:hover {
+  background-color: rgb(255, 255, 255);
+}
+body .app .mic {
+  margin-left: -60px;
+}
+body .app .send {
+  margin-left: 10px;
 }/*# sourceMappingURL=index.css.map */
