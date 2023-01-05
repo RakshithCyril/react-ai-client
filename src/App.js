@@ -1,11 +1,22 @@
-import logo from '../src/main/image/Logo.png';
+// import logo from '../src/main/image/Logo.png';
 // import './App.css';
-import {Route,Router} from 'react-router-dom'
+import {BrowserRouter,Route , Routes} from 'react-router-dom'
 import Chat from './main/Chat'
+import Login from './main/Login';
+import SignUp from './main/Signup';
 
 function App() {
   return (
-   <Chat />
+    <div>
+      <BrowserRouter>
+    <Routes>
+      <Route path='/Chat' element={<Chat />} />
+      <Route path='/login' element={<Login />} />
+      <Route path='/' element={<SignUp />} />
+   
+   </Routes>
+   </BrowserRouter>
+   </div>
   );
 }
 

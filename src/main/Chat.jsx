@@ -58,7 +58,6 @@ export default class Chat extends React.Component {
     })
     return (
       <div className='container'>
-        {/* <h1>Natalia</h1> */}
         <div className='nav'>
         <img className='logocali' src={LogoCali} alt="" />
         </div>
@@ -98,7 +97,7 @@ class Bot extends React.Component {
   }
 componentDidMount(){
   setTimeout(()=>{
-    this.setState({ botout: [...this.state.botout, this.props.test] })    
+    this.setState({ botout: [...this.state.botout, this.props.test] })  
   },2000)
   
 }
