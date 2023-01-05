@@ -47,7 +47,7 @@ export default function SignUp() {
       password: data.get('password'),
     }
     axios
-      .post('http://localhost:8080/signup', userObject)
+      .post('https://server-v62z.onrender.com/signup', userObject)
       .then(res => {
         console.log(res.data)
       })
