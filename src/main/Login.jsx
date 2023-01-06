@@ -14,8 +14,7 @@ import Typography from '@mui/material/Typography'
 import Container from '@mui/material/Container'
 import { createTheme, ThemeProvider } from '@mui/material/styles'
 import { useState } from 'react'
-import { Navigate } from 'react-router-dom'
-import Chat from './Chat'
+
 
 function Copyright (props) {
   return (

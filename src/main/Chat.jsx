@@ -31,6 +31,7 @@ export default class Chat extends React.Component {
         userinput: val
       }
       axios
+      
       .post('https://server-v62z.onrender.com/api', userObject)
       .then(res => {
         this.setState({ botInput: [...this.state.botInput, res.data] })

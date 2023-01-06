@@ -7,6 +7,7 @@ import Grid from '@mui/material/Grid';
 import Box from '@mui/material/Box';
 import axios from 'axios';
 import LockOutlinedIcon from '@mui/icons-material/LockOutlined';
+import Alert from '@mui/material/Alert';
 import Typography from '@mui/material/Typography';
 import Container from '@mui/material/Container';
 import { createTheme, ThemeProvider } from '@mui/material/styles';
@@ -34,22 +35,31 @@ const darkTheme = createTheme({
   
 
 export default function SignUp() {
-  const [name, setName] = useState('david');
+  const [formError,setFormError] = useState(false)
+  const [error,setError] = useState('')
+  const [errormsg,setErrormsg] = useState('')
   
   const handleSubmit = (event) => {
     event.preventDefault();
     const data = new FormData(event.currentTarget);
-    
+    const removeExtraSpace = (s) => s.trim().split(/ +/).join(' ');
     const userObject = {
-      fname: data.get('firstName'),
-      lname:data.get('lastName'),
-      email: data.get('email'),
-      password: data.get('password'),
+      fname: removeExtraSpace(data.get('firstName')),
+      lname:removeExtraSpace(data.get('lastName')),
+      email: removeExtraSpace(data.get('email')),
+      password: removeExtraSpace(data.get('password')),
     }
     axios
+    
       .post('https://server-v62z.onrender.com/signup', userObject)
       .then(res => {
-        console.log(res.data)
+        if(res.data === true){
+          setFormError(true)
+          setError('error')
+          setErrormsg('User already exists !')
+        }else{
+          window.location.replace('/chat')
+        }
       })
       .catch(error => {
         console.log(error)
@@ -78,7 +88,10 @@ export default function SignUp() {
           <Typography component="h1" variant="h5">
             Sign up
           </Typography>
-          <Box component="form" validate="true" onSubmit={handleSubmit} sx={{ mt: 5 }}>
+          <Alert variant="filled" severity={error} sx={{ mt: 3 }}>
+  {errormsg}
+</Alert>
+          <Box component="form" validate="true" onSubmit={handleSubmit} sx={{ mt: 3 }}>
             <Grid container spacing={2}>
               <Grid item xs={12} sm={6}>
                 <TextField
@@ -89,6 +102,7 @@ export default function SignUp() {
                   id="firstName"
                   label="First Name"
                   autoFocus
+                  error={formError}
                 />
               </Grid>
               <Grid item xs={12} sm={6}>
@@ -99,6 +113,7 @@ export default function SignUp() {
                   label="Last Name"
                   name="lastName"
                   autoComplete="family-name"
+                  error={formError}
                 />
               </Grid>
               <Grid item xs={12}>
@@ -110,6 +125,7 @@ export default function SignUp() {
                   label="Email Address"
                   name="email"
                   autoComplete="email"
+                  error={formError}
                 />
               </Grid>
               <Grid item xs={12}>
@@ -121,6 +137,7 @@ export default function SignUp() {
                   type="password"
                   id="password"
                   autoComplete="new-password"
+                  error={formError}
                 />
               </Grid>
              
