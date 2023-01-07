@@ -40,10 +40,10 @@ export default class Chat extends React.Component {
         // .post('http://localhost:8080/api', userObject)
         .then(res => {
           this.setState({ botInput: [...this.state.botInput, res.data] })
-          console.log(this.state.botInput)
+          
         })
         .catch(error => {
-          console.log(error)
+          
         })
       e.preventDefault()
     }
@@ -69,10 +69,10 @@ export default class Chat extends React.Component {
     // .post('http://localhost:8080/api', userObject)
     .then(res => {
       this.setState({ botInput: [...this.state.botInput, res.data] })
-      console.log(this.state.botInput)
+      
     })
     .catch(error => {
-      console.log(error)
+     
     })
   }
   }

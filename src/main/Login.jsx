@@ -62,11 +62,10 @@ export default function Login () {
           setError(res.data)
         }else{
           window.location.replace('/chat')
-          console.log('redirect')
+          
         }
       })
       .catch(error => {
-        console.log(error)
       })
   }
   const link = {
