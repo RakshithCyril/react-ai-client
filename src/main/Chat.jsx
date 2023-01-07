@@ -65,8 +65,8 @@ export default class Chat extends React.Component {
       userinput: transcript
     }
     axios
-    // .post('https://server-v62z.onrender.com/api', userObject)
-    .post('http://localhost:8080/api', userObject)
+    .post('https://server-v62z.onrender.com/api', userObject)
+    // .post('http://localhost:8080/api', userObject)
     .then(res => {
       this.setState({ botInput: [...this.state.botInput, res.data] })
       console.log(this.state.botInput)

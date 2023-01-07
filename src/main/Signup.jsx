@@ -51,8 +51,8 @@ export default function SignUp() {
     }
     axios
     
-      // .post('https://server-v62z.onrender.com/signup', userObject)
-      .post('http://localhost:8080/signup', userObject)
+      .post('https://server-v62z.onrender.com/signup', userObject)
+      // .post('http://localhost:8080/signup', userObject)
       .then(res => {
         if(res.data === true){
           setFormError(true)
