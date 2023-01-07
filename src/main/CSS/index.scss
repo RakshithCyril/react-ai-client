@@ -55,6 +55,18 @@ margin-top: 120px;
     border-radius: 0px 10px 10px 10px;
     font-family: sans-serif;
     animation: botIn 1s linear;
+    .speechimg{
+      width:auto;
+      
+      .speechIcon{
+        display: block;
+        margin: -20px 0px 0px auto;
+        width: 30px;
+        height: 30px;
+        border-radius: 50%;
+    }
+    
+    }
     p{
       margin-top: -35px;     
     }
@@ -86,6 +98,7 @@ margin-top: 120px;
   .user {
     display: flex;
     justify-content: end;
+    
 
     p {
       font-size: 16px;
@@ -123,7 +136,6 @@ margin-top: 120px;
       width: 50px;
       height: 50px;
       img {
-        // padding-top: 10px;
         width: 35px;
         height: 35px;
       }

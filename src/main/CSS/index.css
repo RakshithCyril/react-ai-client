@@ -57,6 +57,16 @@ body .displaySpace .bot {
   -webkit-animation: botIn 1s linear;
           animation: botIn 1s linear;
 }
+body .displaySpace .bot .speechimg {
+  width: auto;
+}
+body .displaySpace .bot .speechimg .speechIcon {
+  display: block;
+  margin: -20px 0px 0px auto;
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+}
 body .displaySpace .bot p {
   margin-top: -35px;
 }
