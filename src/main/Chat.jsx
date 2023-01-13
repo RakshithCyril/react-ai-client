@@ -143,6 +143,15 @@ class Bot extends React.Component {
     setTimeout(() => {
       this.setState({ botout: [...this.state.botout, this.props.test] })
     }, 2000)
+    this.scrollToBottom()
+  }
+  messagesEndRef = React.createRef()
+
+  componentDidUpdate () {
+    this.scrollToBottom()
+  }
+  scrollToBottom = () => {
+    this.messagesEndRef.current?.scrollIntoView({ behavior: 'smooth' })
   }
 
   render () {
@@ -151,9 +160,11 @@ class Bot extends React.Component {
       console.log('error')
     } else {
       return (
+        
         <div className='bot'>
           <p>{botReply}</p>
           <Speech msg={botReply} />
+          <div ref={this.messagesEndRef} />
         </div>
       )
     }
