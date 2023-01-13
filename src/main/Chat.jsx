@@ -101,7 +101,7 @@ export default class Chat extends React.Component {
         <div className='displaySpace'>
           <div className='bot' style={{ backgroundColor: 'white' }}>
             <p>
-              Good day, I'm Natalia. Your AI assistant, I'm here to assist you
+              Good day, I'm AURA. Your AI assistant, I'm here to assist you
               with any questions you may have.
             </p>
             <Speech msg="Good day, I'm Natalia. Your AI assistant, I'm here to assist you with any questions you may have." />
