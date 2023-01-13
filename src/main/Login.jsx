@@ -47,6 +47,15 @@ const darkTheme = createTheme({
 
 export default function Login () {
   const [error,setError] = useState(false)
+  function apiMount() {
+    // axios.get('http://localhost:8080/')
+    axios.get('https://server-v62z.onrender.com/')
+    .then(dat=>{
+    })
+    .catch(err=>{
+    })
+  }
+  apiMount()
   const handleSubmit = event => {
     event.preventDefault()
     const data = new FormData(event.currentTarget)

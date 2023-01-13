@@ -5,7 +5,6 @@ import send from './image/icons8-paper-plane-64.png'
 import typing from './image/typing-dots.gif'
 import axios from 'axios'
 import LogoCali from './image/LogoCali.png'
-import speechIcon from './image/speech.jpg'
 import Speech from './Speech'
 
 export default class Chat extends React.Component {
@@ -20,7 +19,14 @@ export default class Chat extends React.Component {
     this.userInput = this.userInput.bind(this)
     this.recognition = this.recognition.bind(this)
   }
+  componentDidMount(){
+    axios.get('https://server-v62z.onrender.com/')
+    .then(dat=>{
 
+    }).catch(err=>{
+      console.log(err)
+    })
+  }
   userInput (e) {
     const val = e.target[1].value
     if (!val) {
@@ -35,12 +41,10 @@ export default class Chat extends React.Component {
         userinput: val
       }
       axios
-
         .post('https://server-v62z.onrender.com/api', userObject)
         // .post('http://localhost:8080/api', userObject)
         .then(res => {
           this.setState({ botInput: [...this.state.botInput, res.data] })
-          
         })
         .catch(error => {
           
