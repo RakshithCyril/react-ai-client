@@ -1,11 +1,12 @@
-@import url("https://fonts.googleapis.com/css2?family=Kalam&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Source+Code+Pro:wght@500&display=swap");
 body {
   overflow-y: hidden;
   overflow-x: hidden;
-  background-color: #1E1E1E;
+  background-color: #1e1e1e;
   -webkit-backdrop-filter: blur(4px);
           backdrop-filter: blur(4px);
   width: 100%;
+  font-family: "Source Code Pro", monospace;
   background-size: cover;
   background-repeat: no-repeat;
   height: 99vh;
@@ -28,11 +29,12 @@ body .container::-webkit-scrollbar-thumb {
 body .container .nav {
   margin-left: -30px;
   width: 100%;
+  height: 9vh;
   display: flex;
   position: fixed;
   justify-content: center;
   padding: 20px;
-  background-color: #313030;
+  background-color: #1e1e1e;
 }
 body .container .nav img {
   margin-left: -30px;
@@ -68,6 +70,8 @@ body .displaySpace .bot .speechimg .speechIcon {
   border-radius: 50%;
 }
 body .displaySpace .bot p {
+  font-weight: 550;
+  font-family: "Source Code Pro", monospace;
   margin-top: -35px;
 }
 body .displaySpace .bot::before {
@@ -105,11 +109,12 @@ body .displaySpace .user {
   justify-content: end;
 }
 body .displaySpace .user p {
-  font-size: 16px;
+  font-family: "Source Code Pro", monospace;
+  font-size: 18px;
   padding: 10px;
   border-radius: 10px 0px 10px 10px;
   font-family: sans-serif;
-  background-color: rgba(38, 140, 153, 0.7137254902);
+  background-color: #0098fe;
   color: rgba(255, 255, 255, 0.926);
 }
 body .app {
@@ -118,18 +123,21 @@ body .app {
   margin-bottom: 20px;
   width: 90%;
   text-align: center;
+  background-color: #252525;
+  padding: 10px;
+  border-radius: 5px;
 }
 body .app input {
   width: 50%;
-  border: 2px solid #268B99;
+  border: 2px solid #0098fe;
+  color: white;
   padding: 15px;
-  background: rgba(255, 255, 255, 0.816);
-  border-radius: 10px;
+  background: #252525;
+  border-radius: 50px;
   outline: none;
 }
 body .app button {
   position: absolute;
-  bottom: 0;
   background-color: transparent;
   border: none;
   border-radius: 50%;
@@ -140,9 +148,11 @@ body .app button {
 body .app button img {
   width: 35px;
   height: 35px;
+  border-radius: 50%;
+  padding: 5px;
 }
-body .app button:hover {
-  background-color: rgb(255, 255, 255);
+body .app button img:hover {
+  background-color: rgba(76, 75, 75, 0.665);
 }
 body .app .mic {
   margin-left: -60px;

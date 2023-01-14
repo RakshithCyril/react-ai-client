@@ -1,14 +1,15 @@
-@import url('https://fonts.googleapis.com/css2?family=Kalam&display=swap');
-
+@import url('https://fonts.googleapis.com/css2?family=Source+Code+Pro:wght@500&display=swap');
 body {
   overflow-y: hidden;
   overflow-x: hidden;
-  background-color: #1E1E1E;
+  background-color: #1e1e1e;
   backdrop-filter: blur(4px);
   width: 100%;
+  font-family: 'Source Code Pro', monospace;
   background-size: cover;
   background-repeat: no-repeat;
   height: 99vh;
+
   .container {
     height: 85vh;
     overflow-y: scroll;
@@ -22,15 +23,16 @@ body {
       border-radius: 50px;
       background-color: #161514c4;
     }
-    .nav{
+    .nav {
       margin-left: -30px;
       width: 100%;
+      height: 9vh;
       display: flex;
       position: fixed;
       justify-content: center;
       padding: 20px;
-      background-color:#313030;
-      img{
+      background-color: #1e1e1e;
+      img {
         margin-left: -30px;
       }
     }
@@ -41,74 +43,72 @@ body {
     border-radius: 50px;
     margin-left: 30px;
     width: 60px;
-    
   }
-  .displaySpace{
-margin-top: 120px;
+  .displaySpace {
+    margin-top: 120px;
 
-  .bot {
-    margin-left: 30px;
-    background-color: white;
-    max-width: 600px;
-    font-size: 16px;
-    padding: 5px;
-    border-radius: 0px 10px 10px 10px;
-    font-family: sans-serif;
-    animation: botIn 1s linear;
-    .speechimg{
-      width:auto;
-      
-      .speechIcon{
-        display: block;
-        margin: -20px 0px 0px auto;
-        width: 30px;
-        height: 30px;
-        border-radius: 50%;
-    }
-    
-    }
-    p{
-      margin-top: -35px;     
-    }
-    &::before{
-      content: " ";
-      display: block;
-      // position:absolute;
-      margin-left: -65px;
-      margin-top: 0px;
-      border-radius: 50%;
-      width: 50px;
-      height: 50px;
+    .bot {
+      margin-left: 30px;
       background-color: white;
-      background-position: center;
-      background-size: contain;
-      background-repeat: no-repeat;
-      background-image: url('../image/Logo.png');
-        
-    }
-  }
-  @keyframes botIn {
-    0% {
-      opacity: 0;
-    }
-    100% {
-      opacity: 100;
-    }
-  }
-  .user {
-    display: flex;
-    justify-content: end;
-    
-
-    p {
+      max-width: 600px;
       font-size: 16px;
-      padding: 10px;
-      border-radius: 10px 0px 10px 10px;
+      padding: 5px;
+      border-radius: 0px 10px 10px 10px;
       font-family: sans-serif;
-      background-color: #268c99b6;
-      color: rgba(255, 255, 255, 0.926);
+      animation: botIn 1s linear;
+      .speechimg {
+        width: auto;
+
+        .speechIcon {
+          display: block;
+          margin: -20px 0px 0px auto;
+          width: 30px;
+          height: 30px;
+          border-radius: 50%;
+        }
+      }
+      p {
+        font-weight: 550;
+        font-family: 'Source Code Pro', monospace;
+        margin-top: -35px;
+      }
+      &::before {
+        content: ' ';
+        display: block;
+        margin-left: -65px;
+        margin-top: 0px;
+        border-radius: 50%;
+        width: 50px;
+        height: 50px;
+        background-color: white;
+        background-position: center;
+        background-size: contain;
+        background-repeat: no-repeat;
+        background-image: url('../image/Logo.png');
+      }
     }
-  }
+    @keyframes botIn {
+      0% {
+        opacity: 0;
+      }
+      100% {
+        opacity: 100;
+      }
+    }
+    .user {
+      display: flex;
+      justify-content: end;
+
+      p {
+        font-family: 'Source Code Pro', monospace;
+        font-size: 18px;
+        padding: 10px;
+        border-radius: 10px 0px 10px 10px;
+        font-family: sans-serif;
+        background-color: #0098fe;
+        color: rgba(255, 255, 255, 0.926);
+      }
+    }
   }
   .app {
     position: absolute;
@@ -116,37 +116,43 @@ margin-top: 120px;
     margin-bottom: 20px;
     width: 90%;
     text-align: center;
-
+    background-color: #252525;
+    padding: 10px;
+    border-radius: 5px;
     input {
       width: 50%;
-      border: 2px solid #268B99 ;
+      border: 2px solid #0098fe;
+      color: white;
       padding: 15px;
-      background: rgba(255, 255, 255, 0.816);
-      border-radius: 10px;
+      background: #252525;
+      border-radius: 50px;
       outline: none;
     }
 
     button {
       position: absolute;
-      bottom: 0;
+      // bottom: 0;
       background-color: transparent;
       border: none;
       border-radius: 50%;
       transition: 200ms linear;
       width: 50px;
       height: 50px;
+      // background-color: red;
       img {
         width: 35px;
         height: 35px;
-      }
-      &:hover{
-        background-color: rgb(255, 255, 255);
+        border-radius: 50%;
+        padding: 5px;
+        &:hover {
+          background-color: rgba(76, 75, 75, 0.665);
+        }
       }
     }
-    .mic{
+    .mic {
       margin-left: -60px;
     }
-    .send{
+    .send {
       margin-left: 10px;
     }
   }

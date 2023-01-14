@@ -6,6 +6,8 @@ import typing from './image/typing-dots.gif'
 import axios from 'axios'
 import LogoCali from './image/LogoCali.png'
 import Speech from './Speech'
+import Mute from './image/muteUser.png'
+import {ReactMic} from 'react-mic'
 
 export default class Chat extends React.Component {
   constructor (props) {
@@ -14,7 +16,9 @@ export default class Chat extends React.Component {
       userInput: [],
       botInput: [],
       gif: null,
-      click: false
+      click: false,
+      recogImg:microphone,
+      record:false
     }
     this.userInput = this.userInput.bind(this)
     this.recognition = this.recognition.bind(this)
@@ -24,7 +28,6 @@ export default class Chat extends React.Component {
     .then(dat=>{
 
     }).catch(err=>{
-      console.log(err)
     })
   }
   userInput (e) {
@@ -54,31 +57,45 @@ export default class Chat extends React.Component {
   }
   recognition () {
     const SpeechRecognition = window.SpeechRecognition || window.webkitSpeechRecognition
-
     const recognition = new SpeechRecognition()
 
-    recognition.start()
-    recognition.onstart = () => {  
-      console.log('hearing....')
-  }
-  recognition.onresult = (e)=>{
-     let current = e.resultIndex;
-    let transcript = e.results[current][0].transcript;
-    this.setState({ userInput: [...this.state.userInput, transcript] })
-    const userObject = {
-      userinput: transcript
+    if(this.state.recogImg === microphone){
+      this.setState({
+        recogImg:Mute
+      })
+      recognition.start()
+      recognition.onstart = () => {  
+        this.setState({record:true})
+        recognition.onresult = (e)=>{
+          this.setState({
+            recogImg:microphone
+          })
+          recognition.stop()
+          let current = e.resultIndex;
+         let transcript = e.results[current][0].transcript;
+         this.setState({ userInput: [...this.state.userInput, transcript] })
+         const userObject = {
+           userinput: transcript
+         }
+         axios
+         .post('https://server-v62z.onrender.com/api', userObject)
+        //  .post('http://localhost:8080/api', userObject)
+         .then(res => {
+           this.setState({ botInput: [...this.state.botInput, res.data] })
+           
+         })
+         .catch(error => {
+          
+         })
+       }
     }
-    axios
-    .post('https://server-v62z.onrender.com/api', userObject)
-    // .post('http://localhost:8080/api', userObject)
-    .then(res => {
-      this.setState({ botInput: [...this.state.botInput, res.data] })
+    }else{
+      this.setState({
+        recogImg:microphone
+      })
+      recognition.stop()
       
-    })
-    .catch(error => {
-     
-    })
-  }
+    }
   }
 
   render () {
@@ -104,7 +121,7 @@ export default class Chat extends React.Component {
               Good day, I'm AURA. Your AI assistant, I'm here to assist you
               with any questions you may have.
             </p>
-            <Speech msg="Good day, I'm Natalia. Your AI assistant, I'm here to assist you with any questions you may have." />
+            <Speech msg="Good day, I'm Aura. Your AI assistant, I'm here to assist you with any questions you may have." />
           </div>
 
           {user}
@@ -114,7 +131,7 @@ export default class Chat extends React.Component {
         <div className='app'>
           <form onSubmit={this.userInput}>
             <button type='button' onClick={this.recognition} className='mic'>
-              <img src={microphone} alt='' />
+              <img src={this.state.recogImg} alt='' />
             </button>
             <input
               type='text'
