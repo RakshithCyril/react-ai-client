@@ -102,7 +102,7 @@ export default class Chat extends React.Component {
     const user = this.state.userInput.map((data, i) => {
       return (
         <div>
-          <div className='user' key={i}>
+          <div className='user' style={{fontSize:'10px'}} key={i}>
             <p key={i}>{data}</p>
           </div>
           <Bot test={this.state.botInput.slice(-1)[0]} />

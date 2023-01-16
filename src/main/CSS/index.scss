@@ -1,4 +1,5 @@
 @import url('https://fonts.googleapis.com/css2?family=Source+Code+Pro:wght@500&display=swap');
+
 body {
   overflow-y: hidden;
   overflow-x: hidden;
@@ -46,7 +47,20 @@ body {
   }
   .displaySpace {
     margin-top: 120px;
-
+    .user {
+      display: flex;
+      justify-content: end;
+      
+      p {
+        font-family:  monospace;
+        font-size: 18px;
+        padding: 10px;
+        border-radius: 10px 0px 10px 10px;
+        font-family: sans-serif;
+        background-color: #0098fe;
+        color: rgba(255, 255, 255, 0.926);
+      }
+    }
     .bot {
       margin-left: 30px;
       background-color: white;
@@ -95,20 +109,7 @@ body {
         opacity: 100;
       }
     }
-    .user {
-      display: flex;
-      justify-content: end;
-
-      p {
-        font-family: 'Source Code Pro', monospace;
-        font-size: 18px;
-        padding: 10px;
-        border-radius: 10px 0px 10px 10px;
-        font-family: sans-serif;
-        background-color: #0098fe;
-        color: rgba(255, 255, 255, 0.926);
-      }
-    }
+    
   }
   .app {
     position: absolute;
@@ -154,6 +155,61 @@ body {
     }
     .send {
       margin-left: 10px;
+    }
+  }
+}
+
+@media only screen and (max-width: 600px) {
+  body, html {
+    width: auto;
+    height:100%;
+    overflow:hidden;
+  }
+  body{
+    .app{
+      margin-left: -42px;
+      margin-bottom: 12px;
+    }
+    .container{
+      overflow-x:hidden ;
+      margin-bottom: 0px;
+      .nav{
+        margin-left:-50px ;
+      }
+      .displaySpace{
+        .user{
+          margin-right: -30px;
+          p{
+            font-size: 14px;
+            font-family:  monospace;
+          }
+        }
+        .bot{
+          width: 260px;
+          margin-left: -3px;
+          p {
+            font-weight: 550;
+            font-family: 'Source Code Pro', monospace;
+            margin-top: -30px;
+            font-size: 14px;
+            
+          }
+          &::before {
+            content: ' ';
+            display: block;
+            margin-left: -50px;
+            margin-top: 0px;
+            border-radius: 50%;
+            width: 30px;
+            height: 30px;
+            background-color: white;
+            background-position: center;
+            background-size: contain;
+            background-repeat: no-repeat;
+            background-image: url('../image/Logo.png');
+          }
+        }
+      }
     }
   }
 }

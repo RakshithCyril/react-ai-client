@@ -49,8 +49,9 @@ export default function Login () {
   const [error,setError] = useState(false)
   function apiMount() {
     // axios.get('http://localhost:8080/')
-    axios.get('https://server-v62z.onrender.com/')
+    axios.get('https://server-v62z.onrender.com/login')
     .then(dat=>{
+      console.log(dat)
     })
     .catch(err=>{
     })
@@ -64,6 +65,7 @@ export default function Login () {
       password: data.get('password')
     }
     axios
+      // .post('https://blue-hungry-cuttlefish.cyclic.app/login', userObject)
       .post('https://server-v62z.onrender.com/login', userObject)
       // .post('http://localhost:8080/login', userObject)
       .then(res => {

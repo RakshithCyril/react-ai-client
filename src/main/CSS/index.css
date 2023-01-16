@@ -48,6 +48,19 @@ body .typing {
 body .displaySpace {
   margin-top: 120px;
 }
+body .displaySpace .user {
+  display: flex;
+  justify-content: end;
+}
+body .displaySpace .user p {
+  font-family: monospace;
+  font-size: 18px;
+  padding: 10px;
+  border-radius: 10px 0px 10px 10px;
+  font-family: sans-serif;
+  background-color: #0098fe;
+  color: rgba(255, 255, 255, 0.926);
+}
 body .displaySpace .bot {
   margin-left: 30px;
   background-color: white;
@@ -104,19 +117,6 @@ body .displaySpace .bot::before {
     opacity: 100;
   }
 }
-body .displaySpace .user {
-  display: flex;
-  justify-content: end;
-}
-body .displaySpace .user p {
-  font-family: "Source Code Pro", monospace;
-  font-size: 18px;
-  padding: 10px;
-  border-radius: 10px 0px 10px 10px;
-  font-family: sans-serif;
-  background-color: #0098fe;
-  color: rgba(255, 255, 255, 0.926);
-}
 body .app {
   position: absolute;
   bottom: 0;
@@ -159,4 +159,54 @@ body .app .mic {
 }
 body .app .send {
   margin-left: 10px;
+}
+
+@media only screen and (max-width: 600px) {
+  body, html {
+    width: auto;
+    height: 100%;
+    overflow: hidden;
+  }
+  body .app {
+    margin-left: -42px;
+    margin-bottom: 12px;
+  }
+  body .container {
+    overflow-x: hidden;
+    margin-bottom: 0px;
+  }
+  body .container .nav {
+    margin-left: -50px;
+  }
+  body .container .displaySpace .user {
+    margin-right: -30px;
+  }
+  body .container .displaySpace .user p {
+    font-size: 14px;
+    font-family: monospace;
+  }
+  body .container .displaySpace .bot {
+    width: 260px;
+    margin-left: -3px;
+  }
+  body .container .displaySpace .bot p {
+    font-weight: 550;
+    font-family: "Source Code Pro", monospace;
+    margin-top: -30px;
+    font-size: 14px;
+  }
+  body .container .displaySpace .bot::before {
+    content: " ";
+    display: block;
+    margin-left: -50px;
+    margin-top: 0px;
+    border-radius: 50%;
+    width: 30px;
+    height: 30px;
+    background-color: white;
+    background-position: center;
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-image: url("../image/Logo.png");
+  }
 }/*# sourceMappingURL=index.css.map */
