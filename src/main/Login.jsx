@@ -30,7 +30,7 @@ function Copyright (props) {
         href='https://mui.com/'
         style={{ color: '#268c99b6' }}
       >
-        Natalia
+        Aura
       </Link>{' '}
       {new Date().getFullYear()}
       {'.'}
@@ -47,16 +47,7 @@ const darkTheme = createTheme({
 
 export default function Login () {
   const [error,setError] = useState(false)
-  function apiMount() {
-    // axios.get('http://localhost:8080/')
-    axios.get('https://server-v62z.onrender.com/login')
-    .then(dat=>{
-      console.log(dat)
-    })
-    .catch(err=>{
-    })
-  }
-  apiMount()
+  
   const handleSubmit = event => {
     event.preventDefault()
     const data = new FormData(event.currentTarget)
@@ -71,9 +62,15 @@ export default function Login () {
       .then(res => {
         if(res.data === true){
           setError(res.data)
+            
         }else{
           window.location.replace('/chat')
-          
+          localStorage.setItem('error', JSON.stringify(error));
+            if(res.data === false){
+              window.location.replace('/chat')
+            }else{
+              window.location.replace('/login')
+            }
         }
       })
       .catch(error => {

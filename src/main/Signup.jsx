@@ -19,7 +19,7 @@ function Copyright(props) {
     <Typography variant="body2" color="text.secondary" align="center" {...props}>
       {'Copyright © '}
       <Link color="inherit" href="https://mui.com/" style={{color:'#268c99b6'}}>
-        Natalia
+        Aura
       </Link>{' '}
       {new Date().getFullYear()}
       {'.'}
@@ -38,15 +38,6 @@ export default function SignUp() {
   const [formError,setFormError] = useState(false)
   const [error,setError] = useState('')
   const [errormsg,setErrormsg] = useState('')
-  function apiMount() {
-    // axios.get('http://localhost:8080/')
-    axios.get('https://server-v62z.onrender.com/')
-    .then(dat=>{
-    })
-    .catch(err=>{
-    })
-  }
-  apiMount()
   const handleSubmit = (event) => {
     event.preventDefault();
     const data = new FormData(event.currentTarget);
