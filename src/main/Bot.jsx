@@ -10,7 +10,7 @@ class Bot extends React.Component {
     componentDidMount () {
       setTimeout(() => {
         this.setState({ botout: [...this.state.botout, this.props.test] })
-      }, 4800)
+      }, 5000)
       this.scrollToBottom()
     }
     messagesEndRef = React.createRef()
