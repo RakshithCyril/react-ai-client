@@ -7,38 +7,42 @@ import axios from 'axios'
 import LogoCali from './image/LogoCali.png'
 import Speech from './Speech'
 import Mute from './image/muteUser.png'
-import {ReactMic} from 'react-mic'
+import Bot from './Bot'
 
 export default class Chat extends React.Component {
   constructor (props) {
     super(props)
     this.state = {
       userInput: [],
-      botInput: [],
+      botInput: '',
       gif: null,
       click: false,
-      recogImg:microphone,
-      record:false
+      recogImg: microphone,
+      record: false,
+      res: false
     }
     this.userInput = this.userInput.bind(this)
     this.recognition = this.recognition.bind(this)
   }
-  componentDidMount(){
+  componentDidMount () {
     axios.get('https://server-v62z.onrender.com/')
-    .then(dat=>{
-
-    }).catch(err=>{
-    })
+    // axios
+      // .get('http://localhost:8080/', {})
+      .then(dat => {})
+      .catch(err => {
+        console.log(err)
+      })
   }
   userInput (e) {
     const val = e.target[1].value
     if (!val) {
       e.preventDefault()
     } else {
-      this.setState({ gif: typing })
-      setTimeout(() => {
-        this.setState({ gif: null })
-      }, 2000)
+        this.setState({ gif: typing })
+setTimeout(()=>{
+  this.setState({ gif: null })
+},4800)
+      
       this.setState({ userInput: [...this.state.userInput, val] })
       const userObject = {
         userinput: val
@@ -47,54 +51,55 @@ export default class Chat extends React.Component {
         .post('https://server-v62z.onrender.com/api', userObject)
         // .post('http://localhost:8080/api', userObject)
         .then(res => {
-          this.setState({ botInput: [...this.state.botInput, res.data] })
+          // this.setState({ gif: null })
+          this.setState({ botInput:  res.data })
         })
         .catch(error => {
-          
+          // this.setState({ gif: typing })
         })
       e.preventDefault()
     }
   }
   recognition () {
-    const SpeechRecognition = window.SpeechRecognition || window.webkitSpeechRecognition
+    const SpeechRecognition =
+      window.SpeechRecognition || window.webkitSpeechRecognition
     const recognition = new SpeechRecognition()
 
-    if(this.state.recogImg === microphone){
+    if (this.state.recogImg === microphone) {
       this.setState({
-        recogImg:Mute
+        recogImg: Mute
       })
       recognition.start()
-      recognition.onstart = () => {  
-        this.setState({record:true})
-        recognition.onresult = (e)=>{
+      recognition.onstart = () => {
+        this.setState({ record: true })
+        recognition.onresult = e => {
           this.setState({
-            recogImg:microphone
+            recogImg: microphone
           })
           recognition.stop()
-          let current = e.resultIndex;
-         let transcript = e.results[current][0].transcript;
-         this.setState({ userInput: [...this.state.userInput, transcript] })
-         const userObject = {
-           userinput: transcript
-         }
-         axios
-         .post('https://server-v62z.onrender.com/api', userObject)
-        //  .post('http://localhost:8080/api', userObject)
-         .then(res => {
-           this.setState({ botInput: [...this.state.botInput, res.data] })
-           
-         })
-         .catch(error => {
-          
-         })
-       }
-    }
-    }else{
+          let current = e.resultIndex
+          let transcript = e.results[current][0].transcript
+          this.setState({ userInput: [...this.state.userInput, transcript] })
+          const userObject = {
+            userinput: transcript
+          }
+          setTimeout(()=>{
+            this.setState({ gif: null })
+          },4800)
+          axios
+            .post('https://server-v62z.onrender.com/api', userObject)
+            //  .post('http://localhost:8080/api', userObject)
+            .then(res => {
+              this.setState({ botInput:  res.data })
+            })
+            .catch(error => {})
+        }
+      }
+    } else {
       this.setState({
-        recogImg:microphone
+        recogImg: microphone
       })
       recognition.stop()
-      
     }
   }
 
@@ -102,24 +107,33 @@ export default class Chat extends React.Component {
     const user = this.state.userInput.map((data, i) => {
       return (
         <div>
-          <div className='user' style={{fontSize:'10px'}} key={i}>
+          <div className='user' key={i}>
             <p key={i}>{data}</p>
           </div>
-          <Bot test={this.state.botInput.slice(-1)[0]} />
+         
+          <Bot test={this.state.botInput} data={this.state.gif} /> 
           {(document.querySelector('.test').value = '')}
         </div>
       )
     })
+
     return (
       <div className='container'>
         <div className='nav'>
-          <img className='logocali' src={LogoCali} alt='' />
+          <img
+            className='logocali'
+            onClick={() => {
+              window.location.reload(false)
+            }}
+            src={LogoCali}
+            alt=''
+          />
         </div>
         <div className='displaySpace'>
           <div className='bot' style={{ backgroundColor: 'white' }}>
             <p>
-              Good day, I'm AURA. Your AI assistant, I'm here to assist you
-              with any questions you may have.
+              Good day, I'm AURA. Your AI assistant, I'm here to assist you with
+              any questions you may have.
             </p>
             <Speech msg="Good day, I'm Aura. Your AI assistant, I'm here to assist you with any questions you may have." />
           </div>
@@ -149,41 +163,4 @@ export default class Chat extends React.Component {
   }
 }
 
-class Bot extends React.Component {
-  constructor (props) {
-    super(props)
-    this.state = {
-      botout: []
-    }
-  }
-  componentDidMount () {
-    setTimeout(() => {
-      this.setState({ botout: [...this.state.botout, this.props.test] })
-    }, 2000)
-    this.scrollToBottom()
-  }
-  messagesEndRef = React.createRef()
 
-  componentDidUpdate () {
-    this.scrollToBottom()
-  }
-  scrollToBottom = () => {
-    this.messagesEndRef.current?.scrollIntoView({ behavior: 'smooth' })
-  }
-
-  render () {
-    const botReply = this.state.botout.slice(-1)[0]
-    if (!botReply) {
-      console.log('error')
-    } else {
-      return (
-        
-        <div className='bot'>
-          <p>{botReply}</p>
-          <Speech msg={botReply} />
-          <div ref={this.messagesEndRef} />
-        </div>
-      )
-    }
-  }
-}
